@@ -1,0 +1,13 @@
+services:
+  web:
+    image: ${IMAGE_NAME:-devops-ci-demo}:${IMAGE_TAG:-latest}
+    container_name: devops-ci-demo
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
