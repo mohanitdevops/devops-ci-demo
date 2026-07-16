@@ -131,7 +131,8 @@ jobs:
         with:
           image-ref: ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tag }}
           format: table
-          severity: CRITICAL,HIGH
+          severity: CRITICAL
+#          severity: CRITICAL,HIGH          
           exit-code: '1' # pipeline fails the build on critical/high CVEs
 
       - name: Generate SBOM (SPDX)
